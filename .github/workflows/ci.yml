@@ -20,10 +20,12 @@ jobs:
       with:
         path: src
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: release
-        path: src/dist/windows
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: release
+    #     path: src/dist/windows
+    - name: Archive production artifacts
+      run: zip -r release.zip src/dist/
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
